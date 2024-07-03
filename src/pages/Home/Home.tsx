@@ -25,7 +25,7 @@ const AboutSection = styled(Box)(({ theme }) => ({
 
 const ServicesSection = styled(Box)(({ theme }) => ({
   padding: theme.spacing(8, 4),
-  backgroundColor: theme.palette.grey[100],
+  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[100],
   color: theme.palette.text.primary,
 }));
 
