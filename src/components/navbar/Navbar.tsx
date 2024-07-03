@@ -1,11 +1,12 @@
 import { styled, useTheme, alpha } from '@mui/material/styles';
-import { AppBar, Box, Toolbar, IconButton, Typography, InputBase, Button, useMediaQuery } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Typography, InputBase, Button, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useThemeContext } from '../../ThemeContext';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -30,7 +31,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
+    padding: theme.spacing(1, 6, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -43,16 +44,29 @@ export default function Navbar() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const { toggleTheme } = useThemeContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const handleNavigation = (path: any) => {
+    navigate(path);
+    setMobileMenuOpen(false);
+  };
+
+  const menuItems = [
+    { text: 'Om KH Customs', path: '/' },
+    { text: 'Vores løsninger', path: '/solutions' },
+    { text: 'Toldregler', path: '/regulations' },
+    { text: 'Kontakt os', path: '/contact' }
+  ];
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+          <Typography variant="h5" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
             KH Customs
           </Typography>
           <Search>
@@ -62,15 +76,35 @@ export default function Navbar() {
             <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
           </Search>
           {isMobile ? (
-            <IconButton color="inherit" onClick={handleMobileMenuToggle}>
-              <MenuIcon />
-            </IconButton>
+            <>
+              <IconButton color="inherit" onClick={handleMobileMenuToggle}>
+                <MenuIcon />
+              </IconButton>
+              <Drawer anchor="right" open={mobileMenuOpen} onClose={handleMobileMenuToggle}>
+                <List>
+                  {menuItems.map((item) => (
+                    <ListItem key={item.text} disablePadding>
+                      <ListItemButton onClick={() => handleNavigation(item.path)}>
+                        <ListItemText primary={item.text} />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                  <ListItem disablePadding>
+                    <ListItemButton onClick={toggleTheme}>
+                      <ListItemText primary={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'} />
+                      {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                    </ListItemButton>
+                  </ListItem>
+                </List>
+              </Drawer>
+            </>
           ) : (
             <>
-              <Button color="inherit">Om KH Customs</Button>
-              <Button color="inherit">Vores løsninger</Button>
-              <Button color="inherit">Toldregler</Button>
-              <Button color="inherit">Kontakt os</Button>
+              {menuItems.map((item) => (
+                <Button key={item.text} color="inherit" onClick={() => navigate(item.path)}>
+                  {item.text}
+                </Button>
+              ))}
               <IconButton color="inherit" onClick={toggleTheme}>
                 {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
               </IconButton>
