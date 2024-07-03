@@ -4,9 +4,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useThemeContext } from '../../ThemeContext';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/TransparenTwot.png'; 
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -39,6 +41,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const NavbarButton = styled(Button)(({ theme }) => ({
+  margin: theme.spacing(0, 2),
+}));
+
 export default function Navbar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -62,56 +68,65 @@ export default function Navbar() {
     { text: 'Kontakt os', path: '/contact' }
   ];
 
+  const linkedinUrl = "https://www.linkedin.com/company/kh-customs-aps/";
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ bgcolor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : 'white', color: theme.palette.text.primary }}>
         <Toolbar>
-          <Typography variant="h5" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
-            KH Customs
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
-          </Search>
+          <img src={logo} alt="KH Customs Logo" style={{ height: 80, marginRight: theme.spacing(2) }} />
           {isMobile ? (
-            <>
-              <IconButton color="inherit" onClick={handleMobileMenuToggle}>
-                <MenuIcon />
-              </IconButton>
-              <Drawer anchor="right" open={mobileMenuOpen} onClose={handleMobileMenuToggle}>
-                <List>
-                  {menuItems.map((item) => (
-                    <ListItem key={item.text} disablePadding>
-                      <ListItemButton onClick={() => handleNavigation(item.path)}>
-                        <ListItemText primary={item.text} />
-                      </ListItemButton>
-                    </ListItem>
-                  ))}
-                  <ListItem disablePadding>
-                    <ListItemButton onClick={toggleTheme}>
-                      <ListItemText primary={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'} />
-                      {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-                    </ListItemButton>
-                  </ListItem>
-                </List>
-              </Drawer>
-            </>
+            <IconButton color="inherit" onClick={handleMobileMenuToggle}>
+              <MenuIcon />
+            </IconButton>
           ) : (
             <>
-              {menuItems.map((item) => (
-                <Button key={item.text} color="inherit" onClick={() => navigate(item.path)}>
-                  {item.text}
-                </Button>
-              ))}
+              <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
+                {menuItems.map((item) => (
+                  <NavbarButton key={item.text} color="inherit" onClick={() => navigate(item.path)}>
+                    {item.text}
+                  </NavbarButton>
+                ))}
+              </Box>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+              </Search>
               <IconButton color="inherit" onClick={toggleTheme}>
                 {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+              <IconButton color="inherit" onClick={() => window.open(linkedinUrl, "_blank")}>
+                <LinkedInIcon />
               </IconButton>
             </>
           )}
         </Toolbar>
       </AppBar>
+      <Drawer anchor="right" open={mobileMenuOpen} onClose={handleMobileMenuToggle}>
+        <List>
+          {menuItems.map((item) => (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton onClick={() => handleNavigation(item.path)}>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+          <ListItem disablePadding>
+            <ListItemButton onClick={toggleTheme}>
+              <ListItemText primary={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'} />
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => window.open(linkedinUrl, "_blank")}>
+              <ListItemText primary="LinkedIn" />
+              <LinkedInIcon />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Drawer>
     </Box>
   );
 }
