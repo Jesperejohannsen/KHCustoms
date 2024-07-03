@@ -1,5 +1,5 @@
 import { styled, useTheme, alpha } from '@mui/material/styles';
-import { AppBar, Box, Toolbar, IconButton, Typography, InputBase, Button, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, InputBase, Button, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -92,7 +92,7 @@ export default function Navbar() {
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>
-                <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+                <StyledInputBase placeholder="Søg…" inputProps={{ 'aria-label': 'søg' }} />
               </Search>
               <IconButton color="inherit" onClick={toggleTheme}>
                 {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
