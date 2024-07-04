@@ -1,7 +1,6 @@
-import { Box, Typography, Container, List, ListItem, ListItemText, ListItemIcon } from '@mui/material';
+import { Box, Typography, Container, Grid, Paper, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/material/styles';
-import CircleIcon from '@mui/icons-material/Circle';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const AboutSectionContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(8, 4),
@@ -9,45 +8,68 @@ const AboutSectionContainer = styled(Box)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
+const ItemContainer = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(4),
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: theme.spacing(2),
+  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[100],
+}));
+
 export default function AboutSection() {
-  const theme = useTheme();
+
+  const services = [
+    'Udførsler',
+    'Certifikater',
+    'Fortoldninger',
+    'Licenser',
+    'Guidance i toldprocedurer',
+  ];
+
+  const expertise = [
+    'Restriktionsvarer',
+    'Toldoplag',
+    'Forædlingsvarer',
+  ];
 
   return (
     <AboutSectionContainer>
-
       <Container maxWidth="md">
         <Typography variant="h4" component="h2" gutterBottom>
           Uforpligtende og Konkurrencedygtige Tilbud
         </Typography>
+        <Divider sx={{ my: 4 }} />
         <Typography variant="body1" component="p" gutterBottom>
           Ønsker du eller din virksomhed et uforpligtende men konkurrencedygtigt tilbud på toldbehandling? KH Customs tilbyder omfattende ydelser inden for:
         </Typography>
-        <List>
-          {['Udførsler', 'Certifikater', 'Fortoldninger', 'Licenser', 'Guidance i toldprocedurer'].map((item) => (
-            <ListItem key={item}>
-              <ListItemIcon sx={{ minWidth: 'auto', color: theme.palette.text.primary, fontSize: '0.75rem' }}>
-                <CircleIcon fontSize="inherit" />
-              </ListItemIcon>
-              <ListItemText primary={item} />
-            </ListItem>
+        <Grid container spacing={2}>
+          {services.map((item) => (
+            <Grid item xs={12} sm={6} key={item}>
+              <ItemContainer elevation={3}>
+                <CheckCircleIcon color="primary" sx={{ marginRight: 2 }} />
+                <Typography variant="body1">{item}</Typography>
+              </ItemContainer>
+            </Grid>
           ))}
-        </List>
+        </Grid>
+        <Divider sx={{ my: 4 }} />
         <Typography variant="h4" component="h2" gutterBottom>
           Ekspertise og Erfaring
         </Typography>
         <Typography variant="body1" component="p" gutterBottom>
           Med bred og mangeårig erfaring indenfor told kan KH Customs hjælpe eller guide jer gennem enhver problemstilling. Dette gælder uanset om det er sø-, luft- eller vejforsendelser. Vi håndterer også:
         </Typography>
-        <List>
-          {['Restriktionsvarer', 'Toldoplag', 'Forædlingsvarer'].map((item) => (
-            <ListItem key={item}>
-              <ListItemIcon sx={{ minWidth: 'auto', color: theme.palette.text.primary, fontSize: '0.75rem' }}>
-                <CircleIcon fontSize="inherit" />
-              </ListItemIcon>
-              <ListItemText primary={item} />
-            </ListItem>
+        <Grid container spacing={2}>
+          {expertise.map((item) => (
+            <Grid item xs={12} sm={6} key={item}>
+              <ItemContainer elevation={3}>
+                <CheckCircleIcon color="primary" sx={{ marginRight: 2 }} />
+                <Typography variant="body1">{item}</Typography>
+              </ItemContainer>
+            </Grid>
           ))}
-        </List>
+        </Grid>
+        <Divider sx={{ my: 4 }} />
         <Typography variant="h4" component="h2" gutterBottom>
           Toldtjek for Compliance og Optimering
         </Typography>
