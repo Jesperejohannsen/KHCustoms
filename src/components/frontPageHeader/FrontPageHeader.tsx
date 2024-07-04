@@ -1,6 +1,5 @@
 import { Box, Typography, Container, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/material/styles';
 import heroImage from '../../assets/Transport.png';
 
 
@@ -20,7 +19,6 @@ const HeroSection = styled(Box)(({ theme }) => ({
 
 
 export default function FrontPageHeader() {
-    const theme = useTheme();
 
     return (
         <HeroSection>
