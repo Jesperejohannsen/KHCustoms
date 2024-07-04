@@ -1,49 +1,15 @@
-import { styled, useTheme, alpha } from '@mui/material/styles';
-import { AppBar, Box, Toolbar, IconButton, InputBase, Button, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { AppBar, Box, Toolbar, IconButton, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useThemeContext } from '../../ThemeContext';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/TransparenTwot.png'; 
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': { backgroundColor: alpha(theme.palette.common.white, 0.25) },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: { marginLeft: theme.spacing(1), width: 'auto' },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 6, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: { width: '12ch', '&:focus': { width: '20ch' } },
-  },
-}));
-
-const NavbarButton = styled(Button)(({ theme }) => ({
-  margin: theme.spacing(0, 2),
-}));
+import { useLocation, useNavigate } from 'react-router-dom';
+import logo from '../../assets/TransparenTwot.png';
+import SearchBar from './SearchBar';
+import MenuItems from './MenuItems';
 
 export default function Navbar() {
   const theme = useTheme();
@@ -51,22 +17,16 @@ export default function Navbar() {
   const { toggleTheme } = useThemeContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const handleNavigation = (path: any) => {
+  const handleNavigation = (path: string) => {
     navigate(path);
     setMobileMenuOpen(false);
   };
-
-  const menuItems = [
-    { text: 'Om KH Customs', path: '/' },
-    { text: 'Vores løsninger', path: '/solutions' },
-    { text: 'Toldregler', path: '/regulations' },
-    { text: 'Kontakt os', path: '/contact' }
-  ];
 
   const linkedinUrl = "https://www.linkedin.com/company/kh-customs-aps/";
 
@@ -81,19 +41,8 @@ export default function Navbar() {
             </IconButton>
           ) : (
             <>
-              <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
-                {menuItems.map((item) => (
-                  <NavbarButton key={item.text} color="inherit" onClick={() => navigate(item.path)}>
-                    {item.text}
-                  </NavbarButton>
-                ))}
-              </Box>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase placeholder="Søg…" inputProps={{ 'aria-label': 'søg' }} />
-              </Search>
+              <MenuItems location={location} handleNavigation={handleNavigation} />
+              <SearchBar />
               <IconButton color="inherit" onClick={toggleTheme}>
                 {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
               </IconButton>
@@ -106,13 +55,7 @@ export default function Navbar() {
       </AppBar>
       <Drawer anchor="right" open={mobileMenuOpen} onClose={handleMobileMenuToggle}>
         <List>
-          {menuItems.map((item) => (
-            <ListItem key={item.text} disablePadding>
-              <ListItemButton onClick={() => handleNavigation(item.path)}>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <MenuItems location={location} handleNavigation={handleNavigation} />
           <ListItem disablePadding>
             <ListItemButton onClick={toggleTheme}>
               <ListItemText primary={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'} />
