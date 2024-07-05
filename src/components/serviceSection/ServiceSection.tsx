@@ -61,7 +61,7 @@ export default function ServicesSection() {
   return (
     <ServicesSectionContainer>
       <Container maxWidth="lg">
-        <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 'bold', marginBottom: theme.spacing(4) }}>
+        <Typography variant="h3" component="h2" align='center' gutterBottom sx={{ fontWeight: 'bold', marginBottom: theme.spacing(4) }}>
           Vi tilbyder serivce inde for
         </Typography>
         <Grid container spacing={4}>
