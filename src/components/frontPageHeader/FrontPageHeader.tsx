@@ -21,7 +21,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
 export default function FrontPageHeader() {
 
     return (
-        <HeroSection>
+        <HeroSection marginTop={11}>
             <Container maxWidth="md">
                 <Typography variant="h2" component="h1" gutterBottom color={'CaptionText'}>
                     KH Customs

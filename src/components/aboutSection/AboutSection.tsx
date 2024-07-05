@@ -40,7 +40,7 @@ export default function AboutSection() {
   return (
     <AboutSectionContainer>
       <Container maxWidth="md">
-        <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+        <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
           Uforpligtende og Konkurrencedygtige Tilbud
         </Typography>
         <Typography variant="body1" component="p" gutterBottom marginBottom={2}>
@@ -65,7 +65,7 @@ export default function AboutSection() {
           ))}
         </Grid>
         <Divider sx={{ my: 4 }} />
-        <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+        <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
           Ekspertise og Erfaring
         </Typography>
         <Typography variant="body1" component="p" gutterBottom marginBottom={2}>

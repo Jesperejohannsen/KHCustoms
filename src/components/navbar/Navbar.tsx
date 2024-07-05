@@ -1,6 +1,7 @@
-import { useTheme } from '@mui/material/styles';
-import { AppBar, Box, Toolbar, IconButton, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
+import { styled, useTheme } from '@mui/material/styles';
+import { AppBar, Box, Toolbar, IconButton, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -32,7 +33,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : 'white', color: theme.palette.text.primary }}>
+      <AppBar position="fixed" sx={{ bgcolor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : 'white', color: theme.palette.text.primary }}>
         <Toolbar>
           <img src={logo} alt="KH Customs Logo" style={{ height: 80, marginRight: theme.spacing(2) }} />
           {isMobile ? (
@@ -54,21 +55,30 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
       <Drawer anchor="right" open={mobileMenuOpen} onClose={handleMobileMenuToggle}>
-        <List>
-          <MenuItems location={location} handleNavigation={handleNavigation} />
-          <ListItem disablePadding>
-            <ListItemButton onClick={toggleTheme}>
-              <ListItemText primary={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'} />
-              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton onClick={() => window.open(linkedinUrl, "_blank")}>
-              <ListItemText primary="LinkedIn" />
-              <LinkedInIcon />
-            </ListItemButton>
-          </ListItem>
-        </List>
+        <Box sx={{ width: 250, display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
+            <IconButton color="inherit" onClick={handleMobileMenuToggle}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+          <List sx={{ flexGrow: 1 }}>
+            <MenuItems location={location} handleNavigation={handleNavigation} isMobile={true} />
+          </List>
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemText primary={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'} />
+                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => window.open(linkedinUrl, "_blank")}>
+                <ListItemText primary="LinkedIn" />
+                <LinkedInIcon />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Box>
       </Drawer>
     </Box>
   );
