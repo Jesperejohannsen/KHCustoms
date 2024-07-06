@@ -1,5 +1,5 @@
-import { styled, useTheme } from '@mui/material/styles';
-import { AppBar, Box, Toolbar, IconButton, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { AppBar, Box, Toolbar, IconButton, useMediaQuery, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';

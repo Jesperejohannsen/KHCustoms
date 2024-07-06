@@ -47,7 +47,6 @@ const testimonials = [
     text: 'Their expertise in customs regulations is unparalleled.',
     name: 'Customer 4',
   },
-  // Add more testimonials as needed
 ];
 
 export default function TestimonialsSection() {
