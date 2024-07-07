@@ -2,7 +2,7 @@ import { Box, Button, List, ListItem, ListItemButton, ListItemText } from '@mui/
 import { Location } from 'history';
 
 const menuItems = [
-  { text: 'Om KH Customs', path: '/' },
+  { text: 'Forside', path: '/' },
   { text: 'Vores løsninger', path: '/solutions' },
   { text: 'Toldregler', path: '/regulations' },
   { text: 'Kontakt os', path: '/contact' }
