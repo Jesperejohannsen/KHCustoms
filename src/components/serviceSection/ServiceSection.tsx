@@ -44,17 +44,17 @@ export default function ServicesSection() {
     {
       icon: <LocalShipping />,
       title: 'Trucking',
-      description: 'Description of Service 1.',
+      description: 'Service 1 her.',
     },
     {
       icon: <Flight />,
       title: 'Flight(?)',
-      description: 'Description of Service 2.',
+      description: 'Service 2 her.',
     },
     {
       icon: <DirectionsBoat />,
       title: 'Shipping',
-      description: 'Description of Service 3.',
+      description: 'Service 3 her.',
     },
   ];
 

@@ -14,17 +14,17 @@ const AboutSectionContainer = styled(Box)(({ theme }) => ({
 }));
 
 const services = [
-  { text: 'Udførsler', details: 'Details about Udførsler' },
-  { text: 'Certifikater', details: 'Details about Certifikater' },
-  { text: 'Fortoldninger', details: 'Details about Fortoldninger' },
-  { text: 'Licenser', details: 'Details about Licenser' },
-  { text: 'Guidance i toldprocedurer', details: 'Details about Guidance i toldprocedurer' },
+  { text: 'Udførsler', details: 'Detaljer om Udførsler' },
+  { text: 'Certifikater', details: 'Detaljer om Certifikater' },
+  { text: 'Fortoldninger', details: 'Detaljer om Fortoldninger' },
+  { text: 'Licenser', details: 'Detaljer om Licenser' },
+  { text: 'Guidance i toldprocedurer', details: 'Detaljer om Guidance i toldprocedurer' },
 ];
 
 const expertise = [
-  { text: 'Restriktionsvarer', details: 'Details about Restriktionsvarer' },
-  { text: 'Toldoplag', details: 'Details about Toldoplag' },
-  { text: 'Forædlingsvarer', details: 'Details about Forædlingsvarer' },
+  { text: 'Restriktionsvarer', details: 'Detaljer om Restriktionsvarer' },
+  { text: 'Toldoplag', details: 'Detaljer om Toldoplag' },
+  { text: 'Forædlingsvarer', details: 'Detaljer om Forædlingsvarer' },
 ];
 
 

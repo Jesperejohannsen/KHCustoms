@@ -29,23 +29,23 @@ const ArrowButton = styled(Box)(({ theme }) => ({
 const testimonials = [
   {
     image: customer1,
-    text: 'KH Customs provided excellent service and helped us streamline our customs processes.',
-    name: 'Customer 1',
+    text: 'KH Customs Testimonial 1.',
+    name: 'Kunde 1',
   },
   {
     image: customer2,
-    text: 'Their expertise in customs regulations is unparalleled.',
-    name: 'Customer 2',
+    text: 'KH Customs Testimonial 2.',
+    name: 'Kunde 2',
   },
   {
     image: customer1,
-    text: 'Their expertise in customs regulations is unparalleled.',
-    name: 'Customer 3',
+    text: 'KH Customs Testimonial 3.',
+    name: 'Kunde 3',
   },
   {
     image: customer2,
-    text: 'Their expertise in customs regulations is unparalleled.',
-    name: 'Customer 4',
+    text: 'KH Customs Testimonial 4.',
+    name: 'Kunde 4',
   },
 ];
 

@@ -28,19 +28,19 @@ const SolutionCard = styled(Paper)(({ theme }) => ({
 const solutions = [
   {
     title: 'Custom Documents',
-    description: 'We assist with the preparation and processing of all necessary customs documents to ensure smooth transit.',
+    description: 'Tekst her.',
   },
   {
     title: 'Export/Import of Cargo',
-    description: 'We manage the export and import of cargo from all over the globe, ensuring compliance with international regulations.',
+    description: 'Tekst her.',
   },
   {
     title: 'Custom Rules',
-    description: 'Our experts provide guidance on custom rules and regulations to help you avoid any legal complications.',
+    description: 'Tekst her.',
   },
   {
     title: 'Certificates',
-    description: 'We help you obtain the necessary certificates required for international trade and compliance.',
+    description: 'Tekst her.',
   },
 ];
 
