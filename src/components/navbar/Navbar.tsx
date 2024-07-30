@@ -9,7 +9,6 @@ import { useThemeContext } from '../../ThemeContext';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/TransparenTwot.png';
-import SearchBar from './SearchBar';
 import MenuItems from './MenuItems';
 
 export default function Navbar() {
@@ -43,7 +42,6 @@ export default function Navbar() {
           ) : (
             <>
               <MenuItems location={location} handleNavigation={handleNavigation} />
-              <SearchBar />
               <IconButton color="inherit" onClick={toggleTheme}>
                 {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
               </IconButton>

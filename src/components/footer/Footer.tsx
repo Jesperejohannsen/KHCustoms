@@ -8,7 +8,6 @@ import BusinessIcon from '@mui/icons-material/Business';
 const FooterContainer = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[100],
     color: theme.palette.text.primary,
-    padding: theme.spacing(6, 0),
     marginTop: '2rem',
 }));
 

@@ -42,6 +42,14 @@ const solutions = [
     title: 'Certificates',
     description: 'Tekst her.',
   },
+  {
+    title: 'Certificates',
+    description: 'Tekst her.',
+  },
+  {
+    title: 'Certificates',
+    description: 'Tekst her.',
+  },
 ];
 
 export default function SolutionsPage() {
